@@ -32,6 +32,7 @@ namespace Tyuiu.MusinND.Sprint5.Task2.V25.Lib
                 // Записываем в файл результат
                 for (int i = 0; i < matrix.GetLength(0); i++)
                 {
+                    // Создаем строку для текущей строки матрицы
                     string line = string.Empty;
 
                     for (int j = 0; j < matrix.GetLength(1); j++)
@@ -59,26 +60,22 @@ namespace Tyuiu.MusinND.Sprint5.Task2.V25.Lib
         {
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                string row = string.Join(";", matrix.GetRow(i)); // Формируем строку с разделителем ";"
-                Console.WriteLine(row); // Выводим строку на консоль
+                // Формируем строку с разделителями ";"
+                string line = string.Empty;
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    line += matrix[i, j];
+
+                    // Если не последний элемент в строке, добавляем точку с запятой
+                    if (j < matrix.GetLength(1) - 1)
+                    {
+                        line += ";";
+                    }
+                }
+
+                // Выводим строку на консоль
+                Console.WriteLine(line);
             }
-        }
-    }
-
-    // Метод расширения для работы с массивом
-    public static class ArrayExtensions
-    {
-        public static int[] GetRow(this int[,] matrix, int rowIndex)
-        {
-            int columns = matrix.GetLength(1);
-            int[] row = new int[columns];
-
-            for (int i = 0; i < columns; i++)
-            {
-                row[i] = matrix[rowIndex, i];
-            }
-
-            return row;
         }
     }
 }
