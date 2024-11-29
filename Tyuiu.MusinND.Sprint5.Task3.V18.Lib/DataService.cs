@@ -6,7 +6,7 @@ namespace Tyuiu.MusinND.Sprint5.Task3.V18.Lib
 {
     public class DataService : ISprint5Task3V18
     {
-        public byte[] SaveToFileTextData(int x)
+        public string SaveToFileTextData(int x)
         {
             // Выражение F(x) = 2.12 * x^3 + 1.05 * x^2 + 4.1 * x * 2
             double result = 2.12 * Math.Pow(x, 3) + 1.05 * Math.Pow(x, 2) + 4.1 * x * 2;
@@ -15,26 +15,19 @@ namespace Tyuiu.MusinND.Sprint5.Task3.V18.Lib
             result = Math.Round(result, 3);
 
             // Генерируем путь к временному файлу
-            string filePath = Path.GetTempFileName();
+            string filePath = Path.GetTempPath() + "OutPutFileTask3.bin";
 
-            // Записываем результат в бинарный файл
-            using (BinaryWriter writer = new BinaryWriter(File.Open(filePath, FileMode.Create)))
-            {
-                writer.Write(result);
-            }
+            // Преобразуем результат в бинарный вид
+            byte[] binaryResult = BitConverter.GetBytes(result);
 
-            // Читаем содержимое бинарного файла как массив байтов
-            byte[] binaryData = File.ReadAllBytes(filePath);
-
-            // Удаляем временный файл
-            File.Delete(filePath);
+            // Записываем бинарные данные в файл
+            File.WriteAllBytes(filePath, binaryResult);
 
             // Выводим результат на консоль
             Console.WriteLine($"Результат вычисления F({x}) = {result}");
-            Console.WriteLine($"Бинарное представление: {BitConverter.ToString(binaryData)}");
 
-            // Возвращаем бинарное содержимое
-            return binaryData;
+            // Возвращаем путь к файлу
+            return filePath;
         }
     }
 }
