@@ -1,4 +1,6 @@
-﻿using tyuiu.cources.programming.interfaces.Sprint5;
+﻿using System;
+using System.IO;
+using tyuiu.cources.programming.interfaces.Sprint5;
 
 namespace Tyuiu.MusinND.Sprint5.Task3.V18.Lib
 {
@@ -12,23 +14,17 @@ namespace Tyuiu.MusinND.Sprint5.Task3.V18.Lib
             // Округляем результат до 3 знаков после запятой
             result = Math.Round(result, 3);
 
-            // Генерируем путь к временному файлу
-            string filePath = Path.GetTempFileName();
-
-            // Записываем результат в бинарный файл
-            using (BinaryWriter writer = new BinaryWriter(File.Open(filePath, FileMode.Create)))
+            // Преобразуем результат в массив байтов (формат double в бинарном виде)
+            using (MemoryStream memoryStream = new MemoryStream())
             {
-                writer.Write(result);
+                using (BinaryWriter writer = new BinaryWriter(memoryStream))
+                {
+                    writer.Write(result); // Записываем результат в бинарном формате
+                }
+
+                // Возвращаем содержимое в виде массива байтов
+                return memoryStream.ToArray();
             }
-
-            // Читаем содержимое файла в массив байтов
-            byte[] fileBytes = File.ReadAllBytes(filePath);
-
-            // Удаляем временный файл
-            File.Delete(filePath);
-
-            // Возвращаем байты файла
-            return fileBytes;
         }
     }
 }
