@@ -10,10 +10,12 @@ namespace Tyuiu.MusinND.Sprint5.Task5.V2.Lib
         public double LoadFromDataFile(string path)
         {
             // Читаем все строки из файла
-            string[] lines = File.ReadAllLines(path);
+            string fileContent = File.ReadAllText(path);
 
-            // Преобразуем строки в массив вещественных чисел
-            double[] numbers = lines.Select(line => double.Parse(line.Trim())).ToArray();
+            // Разбиваем строку по запятым и преобразуем каждое значение в double
+            double[] numbers = fileContent.Split(',')
+                                          .Select(s => double.Parse(s.Trim())) // Убираем пробелы и парсим числа
+                                          .ToArray();
 
             // Отбираем только положительные значения
             var positiveNumbers = numbers.Where(num => num > 0).ToArray();
