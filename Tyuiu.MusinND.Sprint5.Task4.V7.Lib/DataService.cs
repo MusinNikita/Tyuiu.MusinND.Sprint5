@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using tyuiu.cources.programming.interfaces.Sprint5;
+using System.Globalization;
 
 namespace Tyuiu.MusinND.Sprint5.Task4.V7.Lib
 {
@@ -11,8 +12,8 @@ namespace Tyuiu.MusinND.Sprint5.Task4.V7.Lib
             // Читаем вещественное число из файла
             string fileContent = File.ReadAllText(path).Trim(); // Убираем лишние пробелы
 
-            // Преобразуем строку в вещественное число
-            double x = double.Parse(fileContent);
+            // Преобразуем строку в вещественное число с использованием культуры, где точка является разделителем
+            double x = double.Parse(fileContent, CultureInfo.InvariantCulture);
 
             // Вычисляем y = (1 / cos(x)) + x^3
             double y = (1 / Math.Cos(x)) + Math.Pow(x, 3);
