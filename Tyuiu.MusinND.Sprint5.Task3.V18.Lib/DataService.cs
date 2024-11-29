@@ -4,7 +4,7 @@ namespace Tyuiu.MusinND.Sprint5.Task3.V18.Lib
 {
     public class DataService : ISprint5Task3V18
     {
-        public string SaveToFileTextData(int x)
+        public byte[] SaveToFileTextData(int x)
         {
             // Выражение F(x) = 2.12 * x^3 + 1.05 * x^2 + 4.1 * x * 2
             double result = 2.12 * Math.Pow(x, 3) + 1.05 * Math.Pow(x, 2) + 4.1 * x * 2;
@@ -21,11 +21,14 @@ namespace Tyuiu.MusinND.Sprint5.Task3.V18.Lib
                 writer.Write(result);
             }
 
-            // Выводим результат на консоль
-            Console.WriteLine($"Результат вычисления F({x}) = {result}");
+            // Читаем содержимое файла в массив байтов
+            byte[] fileBytes = File.ReadAllBytes(filePath);
 
-            // Возвращаем путь к файлу
-            return result.ToString();
+            // Удаляем временный файл
+            File.Delete(filePath);
+
+            // Возвращаем байты файла
+            return fileBytes;
         }
     }
 }
