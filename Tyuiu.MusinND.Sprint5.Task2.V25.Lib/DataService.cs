@@ -32,7 +32,6 @@ namespace Tyuiu.MusinND.Sprint5.Task2.V25.Lib
                 // Записываем в файл результат
                 for (int i = 0; i < matrix.GetLength(0); i++)
                 {
-                    // Создаем строку для каждой строки матрицы
                     string line = string.Empty;
 
                     for (int j = 0; j < matrix.GetLength(1); j++)
@@ -53,6 +52,34 @@ namespace Tyuiu.MusinND.Sprint5.Task2.V25.Lib
 
             // Возвращаем путь к созданному файлу
             return filePath;
+        }
+
+        // Метод для вывода массива на консоль с разделителями ";"
+        public void PrintMatrixToConsole(int[,] matrix)
+        {
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                // Создаем строку для каждого ряда массива, с разделителем ";"
+                string row = string.Join(";", matrix.GetRow(i));
+                Console.WriteLine(row); // Выводим строку на консоль
+            }
+        }
+    }
+
+    public static class ArrayExtensions
+    {
+        // Метод расширения для получения строки массива
+        public static int[] GetRow(this int[,] matrix, int rowIndex)
+        {
+            int columns = matrix.GetLength(1);
+            int[] row = new int[columns];
+
+            for (int i = 0; i < columns; i++)
+            {
+                row[i] = matrix[rowIndex, i];
+            }
+
+            return row;
         }
     }
 }
