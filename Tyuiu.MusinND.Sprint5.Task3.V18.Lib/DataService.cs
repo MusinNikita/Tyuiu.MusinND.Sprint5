@@ -14,17 +14,27 @@ namespace Tyuiu.MusinND.Sprint5.Task3.V18.Lib
             // Округляем результат до 3 знаков после запятой
             result = Math.Round(result, 3);
 
-            // Преобразуем результат в массив байтов (формат double в бинарном виде)
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                using (BinaryWriter writer = new BinaryWriter(memoryStream))
-                {
-                    writer.Write(result); // Записываем результат в бинарном формате
-                }
+            // Генерируем путь к временному файлу
+            string filePath = Path.GetTempFileName();
 
-                // Возвращаем содержимое в виде массива байтов
-                return memoryStream.ToArray();
+            // Записываем результат в бинарный файл
+            using (BinaryWriter writer = new BinaryWriter(File.Open(filePath, FileMode.Create)))
+            {
+                writer.Write(result);
             }
+
+            // Читаем содержимое бинарного файла как массив байтов
+            byte[] binaryData = File.ReadAllBytes(filePath);
+
+            // Удаляем временный файл
+            File.Delete(filePath);
+
+            // Выводим результат на консоль
+            Console.WriteLine($"Результат вычисления F({x}) = {result}");
+            Console.WriteLine($"Бинарное представление: {BitConverter.ToString(binaryData)}");
+
+            // Возвращаем бинарное содержимое
+            return binaryData;
         }
     }
 }
