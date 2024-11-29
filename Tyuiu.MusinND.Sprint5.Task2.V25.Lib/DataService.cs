@@ -1,4 +1,6 @@
-﻿using tyuiu.cources.programming.interfaces.Sprint5;
+﻿using System;
+using System.IO;
+using tyuiu.cources.programming.interfaces.Sprint5;
 
 namespace Tyuiu.MusinND.Sprint5.Task2.V25.Lib
 {
@@ -20,7 +22,7 @@ namespace Tyuiu.MusinND.Sprint5.Task2.V25.Lib
             return matrix; // Возвращаем измененную матрицу
         }
 
-        // Метод для сохранения двумерного массива в CSV файл
+        // Метод для сохранения двумерного массива в CSV файл с разделителем ";"
         public string SaveToFileTextData(int[,] matrix)
         {
             // Создаем временный файл
@@ -36,10 +38,10 @@ namespace Tyuiu.MusinND.Sprint5.Task2.V25.Lib
                     {
                         sw.Write(matrix[i, j]);
 
-                        // Если не последний элемент в строке, ставим запятую
+                        // Если не последний элемент в строке, ставим точку с запятой
                         if (j < matrix.GetLength(1) - 1)
                         {
-                            sw.Write(",");
+                            sw.Write(";");
                         }
                     }
                     sw.WriteLine(); // Переход на новую строку
