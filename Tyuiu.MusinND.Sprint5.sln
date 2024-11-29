@@ -33,11 +33,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task2", "Task2", "{11684E37
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task3", "Task3", "{9736639A-0B7D-4477-9235-E2EE658D01BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tyuiu.MusinND.Sprint5.Task4.V17.Lib", "Tyuiu.MusinND.Sprint5.Task4.V17.Lib\Tyuiu.MusinND.Sprint5.Task4.V17.Lib.csproj", "{EE4AE343-9D56-4515-B188-B4D19E067F8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tyuiu.MusinND.Sprint5.Task4.V7.Lib", "Tyuiu.MusinND.Sprint5.Task4.V17.Lib\Tyuiu.MusinND.Sprint5.Task4.V7.Lib.csproj", "{EE4AE343-9D56-4515-B188-B4D19E067F8A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tyuiu.MusinND.Sprint5.Task4.V17", "Tyuiu.MusinND.Sprint5.Task4.V17\Tyuiu.MusinND.Sprint5.Task4.V17.csproj", "{C7F62D39-1E9F-4815-882C-85EE59AA2B9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tyuiu.MusinND.Sprint5.Task4.V7", "Tyuiu.MusinND.Sprint5.Task4.V17\Tyuiu.MusinND.Sprint5.Task4.V7.csproj", "{C7F62D39-1E9F-4815-882C-85EE59AA2B9F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tyuiu.MusinND.Sprint5.Task4.V17.Test", "Tyuiu.MusinND.Sprint5.Task4.V17.Test\Tyuiu.MusinND.Sprint5.Task4.V17.Test.csproj", "{7ADCD093-E779-437F-B2B8-78A4FD2E8F99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tyuiu.MusinND.Sprint5.Task4.V7.Test", "Tyuiu.MusinND.Sprint5.Task4.V17.Test\Tyuiu.MusinND.Sprint5.Task4.V7.Test.csproj", "{7ADCD093-E779-437F-B2B8-78A4FD2E8F99}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tyuiu.MusinND.Sprint5.Task5.V2.Lib", "Tyuiu.MusinND.Sprint5.Task5.V2.Lib\Tyuiu.MusinND.Sprint5.Task5.V2.Lib.csproj", "{E18CEF44-2490-4738-B1B7-17F3E844C2A1}"
 EndProject
