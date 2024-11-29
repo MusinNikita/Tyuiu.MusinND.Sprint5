@@ -18,8 +18,7 @@ namespace Tyuiu.MusinND.Sprint5.Task0.V19.Lib
             string fileName = "OutPutFileTask0.txt";
             File.WriteAllText(fileName, result.ToString());
 
-            // Выводим результат на консоль
-            Console.WriteLine($"Результат: {result}");
+            return result.ToString();
         }
     }
 }
