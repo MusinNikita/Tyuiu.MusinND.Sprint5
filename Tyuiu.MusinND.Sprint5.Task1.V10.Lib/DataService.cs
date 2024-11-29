@@ -11,16 +11,13 @@ namespace Tyuiu.MusinND.Sprint5.Task1.V10.Lib
             string filePath = Path.GetTempFileName();
             using (StreamWriter sw = new StreamWriter(filePath))
             {
-                // Заголовок таблицы
-                // Мы не будем писать заголовок, так как ожидаем только значения в формате чисел.
-
                 // Проходим по диапазону с шагом 1
                 for (int x = startValue; x <= stopValue; x++)
                 {
                     double f_x = CalculateFunction(x);
 
-                    // Форматируем результат с запятой
-                    string result = f_x.ToString("F2", CultureInfo.InvariantCulture).Replace('.', ',');
+                    // Форматируем результат
+                    string result = FormatResult(f_x);
 
                     // Пишем результат в файл
                     sw.WriteLine(result);
@@ -55,6 +52,19 @@ namespace Tyuiu.MusinND.Sprint5.Task1.V10.Lib
                 // В случае любой ошибки возвращаем 0
                 return 0;
             }
+        }
+
+        // Метод для правильного форматирования вывода
+        private string FormatResult(double value)
+        {
+            // Если значение близко к нулю, выводим без десятичных знаков
+            if (Math.Abs(value) < 0.01)
+            {
+                return "0"; // Возвращаем просто "0"
+            }
+
+            // Форматируем значение с запятой в качестве десятичного разделителя
+            return value.ToString("F2", CultureInfo.InvariantCulture).Replace('.', ',');
         }
     }
 }
