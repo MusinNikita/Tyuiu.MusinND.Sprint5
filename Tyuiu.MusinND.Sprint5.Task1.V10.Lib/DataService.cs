@@ -1,4 +1,5 @@
-﻿using tyuiu.cources.programming.interfaces.Sprint5;
+﻿using System.Globalization;
+using tyuiu.cources.programming.interfaces.Sprint5;
 
 namespace Tyuiu.MusinND.Sprint5.Task1.V10.Lib
 {
@@ -11,18 +12,21 @@ namespace Tyuiu.MusinND.Sprint5.Task1.V10.Lib
             using (StreamWriter sw = new StreamWriter(filePath))
             {
                 // Заголовок таблицы
-                sw.WriteLine("x\tF(x)");
+                // Мы не будем писать заголовок, так как ожидаем только значения в формате чисел.
 
                 // Проходим по диапазону с шагом 1
                 for (int x = startValue; x <= stopValue; x++)
                 {
                     double f_x = CalculateFunction(x);
 
+                    // Форматируем результат с запятой
+                    string result = f_x.ToString("F2", CultureInfo.InvariantCulture).Replace('.', ',');
+
                     // Пишем результат в файл
-                    sw.WriteLine($"{x}\t{f_x:F2}");
+                    sw.WriteLine(result);
 
                     // Также выводим на консоль
-                    Console.WriteLine($"{x}\t{f_x:F2}");
+                    Console.WriteLine(result);
                 }
             }
 
