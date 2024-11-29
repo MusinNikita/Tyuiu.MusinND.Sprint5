@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using tyuiu.cources.programming.interfaces.Sprint5;
+﻿using tyuiu.cources.programming.interfaces.Sprint5;
 
 namespace Tyuiu.MusinND.Sprint5.Task2.V25.Lib
 {
@@ -34,17 +32,21 @@ namespace Tyuiu.MusinND.Sprint5.Task2.V25.Lib
                 // Записываем в файл результат
                 for (int i = 0; i < matrix.GetLength(0); i++)
                 {
+                    string line = string.Empty;
+
                     for (int j = 0; j < matrix.GetLength(1); j++)
                     {
-                        sw.Write(matrix[i, j]);
+                        line += matrix[i, j];
 
                         // Если не последний элемент в строке, ставим точку с запятой
                         if (j < matrix.GetLength(1) - 1)
                         {
-                            sw.Write(";");
+                            line += ";";
                         }
                     }
-                    sw.WriteLine(); // Переход на новую строку
+
+                    // Записываем строку в файл
+                    sw.WriteLine(line);
                 }
             }
 
