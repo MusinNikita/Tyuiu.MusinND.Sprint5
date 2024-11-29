@@ -59,16 +59,15 @@ namespace Tyuiu.MusinND.Sprint5.Task2.V25.Lib
         {
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                // Создаем строку для каждого ряда массива, с разделителем ";"
-                string row = string.Join(";", matrix.GetRow(i));
+                string row = string.Join(";", matrix.GetRow(i)); // Формируем строку с разделителем ";"
                 Console.WriteLine(row); // Выводим строку на консоль
             }
         }
     }
 
+    // Метод расширения для работы с массивом
     public static class ArrayExtensions
     {
-        // Метод расширения для получения строки массива
         public static int[] GetRow(this int[,] matrix, int rowIndex)
         {
             int columns = matrix.GetLength(1);
