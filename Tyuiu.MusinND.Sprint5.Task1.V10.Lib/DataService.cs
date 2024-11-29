@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using tyuiu.cources.programming.interfaces.Sprint5;
+﻿using tyuiu.cources.programming.interfaces.Sprint5;
 
 namespace Tyuiu.MusinND.Sprint5.Task1.V10.Lib
 {
@@ -8,38 +6,51 @@ namespace Tyuiu.MusinND.Sprint5.Task1.V10.Lib
     {
         public string SaveToFileTextData(int startValue, int stopValue)
         {
-            string fileName = "OutPutFileTask1.txt";
-            string resultMessage = string.Empty;
-
-            using (StreamWriter writer = new StreamWriter(fileName))
+            // Создаем временный файл
+            string filePath = Path.GetTempFileName();
+            using (StreamWriter sw = new StreamWriter(filePath))
             {
+                // Заголовок таблицы
+                sw.WriteLine("x\tF(x)");
+
+                // Проходим по диапазону с шагом 1
                 for (int x = startValue; x <= stopValue; x++)
                 {
-                    double result;
+                    double f_x = CalculateFunction(x);
 
-                    // Проверяем деление на ноль
-                    if (Math.Abs(2 * x - 1) < 1e-9) // Проверка, близко ли значение к нулю
-                    {
-                        result = 0;
-                    }
-                    else
-                    {
-                        // Вычисляем значение функции
-                        result = ((2 * Math.Cos(x) + 2) / (2 * x - 1)) + Math.Cos(x) - 5 * x + 3;
-                    }
+                    // Пишем результат в файл
+                    sw.WriteLine($"{x}\t{f_x:F2}");
 
-                    // Округляем результат до двух знаков после запятой
-                    result = Math.Round(result, 2);
-
-                    // Записываем результат в файл
-                    writer.WriteLine($"x = {x}, F(x) = {result:F2}");
-
-                    // Storing last result as a message for returning
-                    resultMessage = $"Last calculated result for x = {x} is F(x) = {result:F2}";
+                    // Также выводим на консоль
+                    Console.WriteLine($"{x}\t{f_x:F2}");
                 }
             }
 
-            return resultMessage;
+            // Возвращаем путь к созданному файлу
+            return filePath;
+        }
+
+        // Метод для вычисления значения функции F(x)
+        private double CalculateFunction(int x)
+        {
+            try
+            {
+                // Проверка деления на 0
+                double denominator = 2 * x - 1;
+                if (denominator == 0)
+                {
+                    return 0; // Возвращаем 0 при делении на ноль
+                }
+
+                // Вычисление значения функции
+                double result = ((2 * Math.Cos(x) + 2) / denominator) + Math.Cos(x) - 5 * x + 3;
+                return result;
+            }
+            catch (Exception)
+            {
+                // В случае любой ошибки возвращаем 0
+                return 0;
+            }
         }
     }
 }
