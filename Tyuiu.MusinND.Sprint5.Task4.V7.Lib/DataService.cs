@@ -11,12 +11,8 @@ namespace Tyuiu.MusinND.Sprint5.Task4.V7.Lib
             // Читаем вещественное число из файла
             string fileContent = File.ReadAllText(path).Trim(); // Убираем лишние пробелы
 
-            // Преобразуем строку в вещественное число с использованием TryParse
-            double x;
-            if (!double.TryParse(fileContent, out x))
-            {
-                throw new FormatException("Ошибка преобразования строки в число");
-            }
+            // Преобразуем строку в вещественное число
+            double x = double.Parse(fileContent);
 
             // Вычисляем y = (1 / cos(x)) + x^3
             double y = (1 / Math.Cos(x)) + Math.Pow(x, 3);
