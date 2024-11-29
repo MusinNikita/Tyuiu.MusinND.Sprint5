@@ -14,8 +14,8 @@ namespace Tyuiu.MusinND.Sprint5.Task0.V19.Lib
             // Округляем результат до трех знаков после запятой
             result = Math.Round(result, 3);
 
-            // Сохраняем результат в файл
-            string fileName = "OutPutFileTask0.txt";
+            // Определяем временный файл для сохранения результата
+            string fileName = Path.GetTempFileName();
             File.WriteAllText(fileName, result.ToString());
 
             return result.ToString();
